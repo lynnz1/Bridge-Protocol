@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: AGPL-3.0
 
-pragma solidity 0.8.19;
+pragma solidity ^0.8.17;
 
-import "Bridge-Protocol/polygonZKEVMContracts/interfaces/IBridgeMessageReceiver.sol";
-import "Bridge-Protocol/polygonZKEVMContracts/interfaces/IPolygonZkEVMBridge.sol";
+import "polygonZKEVMContracts/interfaces/IBridgeMessageReceiver.sol";
+import "polygonZKEVMContracts/interfaces/IPolygonZkEVMBridge.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 /**
