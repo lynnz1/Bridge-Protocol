@@ -16,8 +16,10 @@ Supported data structure includes:
 
 
 Contract address:
-Sender contract developed on Goerli: 
-Receiver contract developed on PolygonZKevm testnet:
+
+Sender contract developed on Goerli: 0x653A5fF87E8570980C8AEE5CA7c54E7B4C89F235
+
+Receiver contract developed on PolygonZKevm testnet:0x2834C606571d7C4A6Ff9051cd4F67cC12D12c76f
 
 ## Deployment
 Go to 'contract' folder, follow the instruction in 'readme'.
