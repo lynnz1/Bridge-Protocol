@@ -13,3 +13,10 @@ Supported data structure includes:
    
 2. Data that is restricted to be viewed by sepecific user.
    This functions allows personalized data to be sent and displayed. It is very useful when used to display information such as the investment amount, percentage of growth etc.
+
+
+## Deployment
+Go to 'contract' folder, follow the instruction in 'readme'.
+Go to 'frontend' folder, run 'npm install' and 'npm start' to start the application.
+
+
