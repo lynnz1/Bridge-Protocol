@@ -15,6 +15,10 @@ Supported data structure includes:
    This functions allows personalized data to be sent and displayed. It is very useful when used to display information such as the investment amount, percentage of growth etc.
 
 
+Contract address:
+Sender contract developed on Goerli: 
+Receiver contract developed on PolygonZKevm testnet:
+
 ## Deployment
 Go to 'contract' folder, follow the instruction in 'readme'.
 Go to 'frontend' folder, run 'npm install' and 'npm start' to start the application.
