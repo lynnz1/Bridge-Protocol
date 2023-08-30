@@ -27,10 +27,12 @@ export class DataDisplay extends React.Component {
       this._provider.getSigner(0)
     );
     const data = await this._poLotto.viewStrategies();
+    console.log(data);
     data.forEach((item, index) => {
       const strategyName = item[0].toString()
       const apy = item[1].toString();
       const newData = {
+        key: index,
         strategyName,
         apy: ethers.utils.formatUnits(ethers.BigNumber.from(apy), 18),
       };
@@ -43,6 +45,7 @@ export class DataDisplay extends React.Component {
       const currentValue = item[2].toString()
       const percentage = item[3].toString();
       const newData1 = {
+        key: index,
         strategyName,
         investment: ethers.utils.formatUnits(ethers.BigNumber.from(investment), 18),
         currentValue: ethers.utils.formatUnits(ethers.BigNumber.from(currentValue), 18),

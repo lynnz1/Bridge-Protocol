@@ -9,6 +9,7 @@ import { Row, Col } from 'antd';
 import { AccountBookOutlined } from '@ant-design/icons';
 
 
+
 export class Dapp extends React.Component {
   constructor(props) {
     super(props);
@@ -46,7 +47,7 @@ export class Dapp extends React.Component {
           <Row>
             <Col span={24}>
               <div style={{ display: 'flex', marginBottom: 15 }}>
-                <AccountBookOutlined style={{  fontSize : 28 }}/>
+                <AccountBookOutlined style={{ fontSize: 28 }} />
                 <h5 style={{ marginLeft: 10 }}>
                   {this.state.selectedAddress}
                 </h5>
@@ -62,12 +63,40 @@ export class Dapp extends React.Component {
   componentWillUnmount() {
     this._stopPollingData();
   }
-
+  
   async _connectWallet() {
     const [selectedAddress] = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
+  
+    // Get the current chain ID
+    const chainId = await window.ethereum.request({
+      method: "eth_chainId",
+    });
+    console.log("chainId",chainId);
+  
+    // Check if the current chain ID is the specified chain ID
+    if (chainId !== "0x5a2") {
+      // Show network error message and switch to the specified chain
+      this.setState({
+        networkError: "Please switch to the specified chain",
+      });
+  
+      try {
+        await window.ethereum.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: "0x5a2" }],
+        });
+      } catch (error) {
+        // Handle error if switching chain fails
+        console.error(error);
+      }
+  
+      return;
+    }
+  
     this._initialize(selectedAddress);
+  
     window.ethereum.on("accountsChanged", ([newAddress]) => {
       this._stopPollingData();
       if (newAddress === undefined) {
@@ -92,7 +121,6 @@ export class Dapp extends React.Component {
       this._provider.getSigner(0)
     );
   }
-
 
   _stopPollingData() {
     clearInterval(this._pollDataInterval);
